@@ -40,6 +40,18 @@ public class MainController {
 		return mav;
 	}
 	
+	@RequestMapping("/ver")
+	public ModelAndView ver() {
+		ModelAndView mav = new ModelAndView();
+		List<Contribuyente> contribuyentes = null;
+		try {
+			contribuyentes = cservice.listar();
+		}catch(Exception e) {}
+		mav.addObject("contribuyentes",contribuyentes);
+		mav.setViewName("contribuyentes");
+		return mav;
+	}
+	
 	@RequestMapping("/save")
 	public ModelAndView save(@Valid @ModelAttribute Contribuyente contribuyente, BindingResult result, @RequestParam("escoger") int c_importancia) {
 		ModelAndView mav = new ModelAndView();

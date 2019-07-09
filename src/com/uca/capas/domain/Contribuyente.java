@@ -1,5 +1,6 @@
 package com.uca.capas.domain;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -51,6 +52,12 @@ public class Contribuyente {
 	@JoinColumn(name = "c_importancia")
 	private Importancia importancia;
 
+	public String getDelegateFecha() {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		String dateString = format.format(f_fecha_ingreso);
+		return dateString;
+	}
+	
 	public int getC_contribuyente() {
 		return c_contribuyente;
 	}
